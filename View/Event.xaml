@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="prototype.View.Event"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d">
+
+    <Grid>
+        <DataGrid x:Name="EventDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Event Name" Binding="{Binding EventName}" Width="*"/>
+                <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate, StringFormat=MM/dd/yyyy}" Width="*"/>
+                <DataGridTextColumn Header="End Date" Binding="{Binding EndDate, StringFormat=MM/dd/yyyy}" Width="*"/>
+                <DataGridTextColumn Header="Start Time" Binding="{Binding StartTimeFormatted}" Width="*"/>
+                <DataGridTextColumn Header="End Time" Binding="{Binding EndTimeFormatted}" Width="*"/>
+                <DataGridTemplateColumn Header="Action" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="View Departments" Click="ViewDepartments_Click" 
+                            Tag="{Binding EventID}" Margin="5"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

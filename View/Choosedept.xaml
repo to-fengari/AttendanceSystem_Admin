@@ -1,0 +1,268 @@
+﻿<UserControl x:Class="prototype.View.Choosedept"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:prototype.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="850"
+             Background="white"
+             Style="{StaticResource Page_Style}">
+
+    <!--para sa image-->
+    <UserControl.Resources>
+        <ImageBrush x:Key="dept1" ImageSource="/Image/newbed.png" />
+        <ImageBrush x:Key="dept2" ImageSource="/Image/newcae.png" />
+        <ImageBrush x:Key="dept3" ImageSource="/Image/newcafae.png" />
+        <ImageBrush x:Key="dept4" ImageSource="/Image/newcase.png" />
+        <ImageBrush x:Key="dept5" ImageSource="/Image/download.jpeg" />
+        <ImageBrush x:Key="dept6" ImageSource="/Image/newccje.png" />
+        <ImageBrush x:Key="dept7" ImageSource="/Image/newcee.png" />
+        <ImageBrush x:Key="dept8" ImageSource="/Image/newche.png" />
+        <ImageBrush x:Key="dept9" ImageSource="/Image/newchse.png" />
+        <ImageBrush x:Key="dept10" ImageSource="/Image/newcte.png" />
+        <ImageBrush x:Key="dept11" ImageSource="/Image/newts.png" />
+        <ImageBrush x:Key="dept12" ImageSource="/Image/newps.png" />
+
+    </UserControl.Resources>
+
+    <Border Padding="9" BorderBrush="Black" BorderThickness="0">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="204" />
+                <ColumnDefinition Width="205" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160" />
+                <RowDefinition Height="160" />
+                <RowDefinition Height="160" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--Buttons-->
+            <ToggleButton Grid.Column="0" Grid.Row="0" BorderThickness="0" Background="Transparent" Checked="BED">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Ellipse Fill="{StaticResource dept1}" Width="111" Height="110" />
+                        <Label Content="BED" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="1" Grid.Row="0"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CAE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Ellipse Fill="{StaticResource dept2}"
+                             Width="100" Height="100"/>
+                        <Label Content="CAE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="2" Grid.Row="0"              
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CAFAE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Border Width="100" Height="100" CornerRadius="10" 
+                                Background="{StaticResource dept3}" />
+                        <Label Content="CAFAE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="3" Grid.Row="0"              
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CASE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Border Width="100" Height="100" CornerRadius="10" 
+                                Background="{StaticResource dept4}" />
+                        <Label Content="CASE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="0" Grid.Row="1"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CCE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Border Width="100" Height="100" CornerRadius="10" 
+                                Background="{StaticResource dept5}" />
+                        <Label Content="CCE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="1" Grid.Row="1"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CCJE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Ellipse Fill="{StaticResource dept6}"
+                             Width="100" Height="100"/>
+                        <Label Content="CCJE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="2" Grid.Row="1"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CEE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Ellipse Fill="{StaticResource dept7}"
+                             Width="100" Height="100"/>
+                        <Label Content="CEE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="3" Grid.Row="1"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CHSE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Ellipse Fill="{StaticResource dept8}"
+                                 Width="108" Height="108"/>
+                        <Label Content="CHE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="0" Grid.Row="2"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CHE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Border Width="100" Height="100" CornerRadius="10" 
+                                Background="{StaticResource dept9}" />
+                        <Label Content="CHSE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="1" Grid.Row="2"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="CTE">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Ellipse Fill="{StaticResource dept10}"
+                             Width="100" Height="100"/>
+                        <Label Content="CTE" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="2" Grid.Row="2"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="TS">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Ellipse Fill="{StaticResource dept11}"
+                             Width="100" Height="100"/>
+                        <Label Content="TS" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+
+            <ToggleButton Grid.Column="3" Grid.Row="2"
+                          BorderThickness="0"
+                          Background="Transparent" Checked="PS">
+                <ToggleButton.Content>
+                    <StackPanel>
+                        <Border Width="100" Height="100" CornerRadius="10" 
+                            Background="{StaticResource dept12}" />
+                        <Label Content="PS" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+
+            </ToggleButton>
+            <Grid Grid.Row="3" Grid.Column="3" Margin="0,0,-23,0">
+                <Button Content="Confirm" Click="Confirmed_Button"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center" Width="136" Height="50">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20" Padding="10">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background" Value="#b02a24"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="13"/>
+                            <Setter Property="FontFamily" Value="Montserrat"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Margin" Value="10"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="3" Grid.Column="0" Margin="0,0,8,0">
+                <Button Content="Back" Click="Back_Button"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center" Width="136" Height="50">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20" Padding="10">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background" Value="#b02a24"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="13"/>
+                            <Setter Property="FontFamily" Value="Montserrat"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Margin" Value="10"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:vm="clr-namespace:prototype.ViewModel" 
+                    xmlns:view="clr-namespace:prototype.View">
+
+    <DataTemplate DataType="{x:Type vm:DashboardVM}">
+        <view:dashboard />
+    </DataTemplate>
+    
+ 
+    
+
+    
+  
+    
+    
+
+</ResourceDictionary>

@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="prototype.View.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:prototype.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800"
+             Background="White"
+             Style="{StaticResource Page_Style}">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock FontSize="40" FontWeight="Bold" TextAlignment="Center" Margin="0, 20, 0, 0" FontStyle="Italic"> 
+                <Run Text="Welcome to" Foreground="Black" /> 
+                <Run Text="Mga Ga, Go Attendance!" Foreground="#b20a07" />
+            </TextBlock>
+            <TextBlock Text="Transforming Attendance with QR Code Technology" Foreground="#6c757d"
+                       FontSize="23" FontWeight="Bold" FontFamily="Arial"
+                       Margin="28,0,0,0" Width="714"/>
+
+            <TextBlock Margin="20,60,0,0" FontSize="20" FontWeight="Bold" Width="722"> 
+                <Run Text="About the" Foreground="#f98800" />
+                <Run Text="System" Foreground="#b20a07" />
+            </TextBlock>
+
+            <!--brief paragraph-->
+            <TextBlock Text="Say goodbye to traditional index cards and embrace modern attendance tracking. With Mga Ga, Go Attendance, students and staff can mark their attendance quickly and securely using QR codes. Let’s make attendance effortless and eco-friendly!" 
+                       Foreground="black" FontSize="18" TextAlignment="Left" Margin="20, 5, 20, 20" TextWrapping="Wrap" Width="699"
+                       FontFamily="Roboto" />
+
+            <TextBlock Margin="20,40,0,0" FontSize="20" FontWeight="Bold" Width="722"> 
+                  <Run Text="Benefits" Foreground="#b20a07" />
+                  <Run Text="of the System" Foreground="#f98800" />
+            </TextBlock>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--keep lng left margin to 40 kay dli siya uniform pag run sa code-->
+                <TextBlock Grid.Column="0"
+                           Margin="40 10 0 0" FontSize="18" FontFamily="Roboto"
+                           TextWrapping="Wrap">
+                    <Run Text="Eco-friendly:" Foreground="#f98800" FontWeight="SemiBold"/>
+                    <Run Text="Save paper by eliminating index cards." />
+                </TextBlock>
+
+                <TextBlock Grid.Column="1" 
+                           Margin="20 10 0 0" FontSize="18" FontFamily="Roboto"
+                           TextWrapping="Wrap">
+                    <Run Text="Efficient:" Foreground="#f98800" FontWeight="SemiBold"/>
+                    <Run Text="Quick and error-free tracking." />
+                </TextBlock>
+
+                <TextBlock Grid.Column="2" 
+                           Margin="20 10 0 0" FontSize="18" FontFamily="Roboto"
+                           TextWrapping="Wrap">
+                    <Run Text="Secure:" Foreground="#f98800" FontWeight="SemiBold"/>
+                    <Run Text="QR codes prevent fraudulent attendance marking." />
+                </TextBlock>
+
+            </Grid>
+            
+
+        </StackPanel>
+
+        <TextBlock Text="Attendance Made Simple, One Scan at a Time!" 
+                   Foreground="#6c757d" FontSize="19" FontWeight="SemiBold" 
+                   TextAlignment="Center" Margin="0, 0, 0, 20" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                   FontStyle="Italic"/>
+       
+    </Grid>
+</UserControl>
