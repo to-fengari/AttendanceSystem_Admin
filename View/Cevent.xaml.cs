@@ -1,20 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using Microsoft.Data.SqlClient;
 using System.Windows.Controls;
-using Microsoft.Data.SqlClient;
+using System.Windows;
+using Microsoft.Extensions.Logging;
 
 namespace prototype.View
 {
     public partial class Cevent : UserControl
     {
-        private readonly string connectionString = @"Server=MSI\SQLEXPRESS01; Database=LoginDB; Integrated Security=True; Encrypt=True; TrustServerCertificate=True";
         public ContentControl MainDisplay { get; set; }
+        private readonly string connectionString = App.ConnectionString;
+        private bool isEditing;
+        private int? eventId;
 
-        public Cevent(ContentControl mainDisplay)
-        {
+        public Cevent(ContentControl mainDisplay, bool isEditing, int? eventId = null)
+        {   
             InitializeComponent();
             MainDisplay = mainDisplay;
+            this.eventId = eventId;
+            this.isEditing = isEditing;
+
+            if (isEditing == true)
+            {
+                CeventTitle.Text = "Edit Event";
+                LoadEventDetails(eventId.Value);
+            }
+            else
+            {
+                isEditing = false;
+                CeventTitle.Text = "Create New Event";
+                CreateNewEvent();
+            }
+        }
+
+        private void LoadEventDetails(int eventId)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT EventName, StartDate, EndDate, StartTime, EndTime FROM event.Event_List WHERE EventID = @EventID";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@EventID", eventId);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            EventNameTextBox.Text = reader.GetString(0);
+                            StartDatePicker.SelectedDate = reader.GetDateTime(1);
+                            EndDatePicker.SelectedDate = reader.GetDateTime(2);
+                            StartTimeComboBox.SelectedItem = GetComboBoxItemByTime(reader.GetTimeSpan(3));
+                            EndTimeComboBox.SelectedItem = GetComboBoxItemByTime(reader.GetTimeSpan(4));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Event not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Database error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void CreateNewEvent()
+        {
+            EventNameTextBox.Text = string.Empty;
+            StartDatePicker.SelectedDate = DateTime.Today;
+            EndDatePicker.SelectedDate = DateTime.Today;
+            StartTimeComboBox.SelectedIndex = 0;
+            EndTimeComboBox.SelectedIndex = 0;
+        }
+
+        private ComboBoxItem GetComboBoxItemByTime(TimeSpan time)
+        {
+            foreach (ComboBoxItem item in StartTimeComboBox.Items)
+            {
+                if (DateTime.TryParse(item.Content.ToString(), out DateTime parsedTime) && parsedTime.TimeOfDay == time)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
 
         private void choosedept_btn(object sender, RoutedEventArgs e)
@@ -36,6 +106,12 @@ namespace prototype.View
             TimeSpan startTime = DateTime.Parse(startTimeString).TimeOfDay;
             TimeSpan endTime = DateTime.Parse(endTimeString).TimeOfDay;
 
+            if (endTime <= startTime)
+            {
+                MessageBox.Show("End Time must be later than Start Time.", "Invalid Time Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             var eventDetails = new Dictionary<string, object>
             {
                 { "EventName", eventName },
@@ -45,52 +121,25 @@ namespace prototype.View
                 { "EndTime", endTime }
             };
 
-            int eventID = SaveEventToDatabase(eventDetails);
-
-            if (eventID != -1)
+            if (isEditing && eventId.HasValue)
             {
-                if (MainDisplay == null)
-                {
-                    MessageBox.Show("MainDisplay is not initialized.");
-                    return;
-                }
-
-                try
-                {
-                    Choosedept choosedept_btn = new Choosedept(MainDisplay, eventID);
-                    MainDisplay.Content = choosedept_btn;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred: {ex.Message}\n\n{ex.StackTrace}");
-                }
+                eventDetails["EventID"] = eventId.Value;
             }
-        }
 
-        private int SaveEventToDatabase(Dictionary<string, object> eventDetails)
-        {
+            if (MainDisplay == null)
+            {
+                MessageBox.Show("MainDisplay is not initialized.");
+                return;
+            }
+
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string query = "INSERT INTO Events (EventName, StartDate, EndDate, StartTime, EndTime) OUTPUT INSERTED.EventID VALUES (@EventName, @StartDate, @EndDate, @StartTime, @EndTime)";
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@EventName", eventDetails["EventName"]);
-                        command.Parameters.AddWithValue("@StartDate", eventDetails["StartDate"]);
-                        command.Parameters.AddWithValue("@EndDate", eventDetails["EndDate"]);
-                        command.Parameters.AddWithValue("@StartTime", eventDetails["StartTime"]);
-                        command.Parameters.AddWithValue("@EndTime", eventDetails["EndTime"]);
-
-                        connection.Open();
-                        return (int)command.ExecuteScalar(); 
-                    }
-                }
+                Choosedept choosedept = new Choosedept(MainDisplay, eventDetails, isEditing, eventId);
+                MainDisplay.Content = choosedept;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return -1; 
+                MessageBox.Show($"An error occurred: {ex.Message}\n\n{ex.StackTrace}");
             }
         }
     }

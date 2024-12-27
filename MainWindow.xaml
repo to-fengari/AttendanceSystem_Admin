@@ -5,7 +5,8 @@
         xmlns:vm="clr-namespace:prototype.ViewModel"
         xmlns:Menu="clr-namespace:prototype.Utilities"
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None"
-        AllowsTransparency="True" Background="Transparent">
+        AllowsTransparency="True" Background="Transparent"
+        Icon="/Image/atticon.ico">
 
     <Border Background="#f6f6f6" CornerRadius="30" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
@@ -26,59 +27,77 @@
                         <DockPanel>
                             <!--Logo-->
                             <!-- adjust lng margin if i move ang logo sheesh-->
-                            <Border Width="150" Height="100" Padding="3" Background="#b20a07" 
+                            <Border Width="165" Height="105" Padding="3" Background="#b20a07" 
                                 DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 29 0 0">
-                                <Image Source="Image/newlogo.png" Stretch="UniformToFill" Margin="0,1,0,-1"/>
+                                <Image Source="Image/enreclogo.png" Stretch="UniformToFill" Margin="-6,1,-2,0"/>
                             </Border>
 
                             <!--Title-->
                             <TextBlock Foreground="#f5cf28" FontSize="19" FontWeight="SemiBold"
                                        DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 1"
-                                       Text="Mga Ga,"/>
+                                       Text="''Mga Ga,"/>
 
                             <TextBlock Foreground="#f5cf28" FontSize="19" FontWeight="SemiBold"
                                        DockPanel.Dock="Top" TextAlignment="Center" Margin="5 0 0 10"
-                                       Text="Go Attendance!" FontFamily="sans-serif"/>
+                                       Text="Go Attendance!''" FontFamily="sans-serif"/>
 
                             <!--Menu Separator-->
-                            <Separator Margin="5" DockPanel.Dock="Top" Height="0.8" Background="#be180d" />
+                            <Separator Margin="0" DockPanel.Dock="Top" Height="0.8" Background="#be180d" />
 
 
                             <!--MenuButtons-->
                             <StackPanel DockPanel.Dock="Top" x:Name="MenuContainer">
+                                <!--Home Button-->
                                 <Button Style="{StaticResource menuButton}" Click="Homebtn">
                                     <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
                                         <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
                                         <TextBlock Text="Home"/>
                                     </StackPanel>
                                 </Button>
-                                <Button Style="{StaticResource menuButton}" Click="Dashboardbtn">
 
+                                <!--dashboard button-->
+                                <Button Style="{StaticResource menuButton}" Click="Dashboardbtn">
                                     <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
                                         <Icon:PackIconMaterial Kind="BorderAll" Style="{StaticResource menuButtonIcon}"/>
                                         <TextBlock Text="Dashboard"/>
                                     </StackPanel>
                                 </Button>
 
-                                <Button Style="{StaticResource menuButton}" Click="Ceeventbtn_Click">
+                                <!--Create Event Button-->
+                                <Button Style="{StaticResource menuButton}" Click="Ceeventbtn_Click" x:Name="CeventVutton">
                                     <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
                                         <Icon:PackIconMaterial Kind="CalendarPlus" Style="{StaticResource menuButtonIcon}"/>
                                         <TextBlock Text="Create Event"/>
                                     </StackPanel>
                                 </Button>
 
-
-                                <Button Style="{StaticResource menuButton}" Click="Event_Click">
+                                <!--Event Button-->
+                                <Button Style="{StaticResource menuButton}" Click="Event_Click" x:Name="EventButton">
                                     <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
                                         <Icon:PackIconMaterial Kind="CalendarClock" Style="{StaticResource menuButtonIcon}"/>
                                         <TextBlock Text="Events"/>
                                     </StackPanel>
                                 </Button>
+                                
+                                <!--Student List-->
+                                <Button Style="{StaticResource menuButton}" Click="StudentList_Click" x:Name="StudentListButton">
+                                    <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+                                        <Icon:PackIconMaterial Kind="Database" Style="{StaticResource menuButtonIcon}"/>
+                                        <TextBlock Text="Student List"/>
+                                    </StackPanel>
+                                </Button>
 
-
-
-
+                                <!--How to use Button-->
+                                <Button Style="{StaticResource menuButton}" Click="htu_Click">
+                                    <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
+                                        <Icon:PackIconMaterial Kind="HelpCircle" Style="{StaticResource menuButtonIcon}"/>
+                                        <TextBlock Text="How To Use?"/>
+                                    </StackPanel>
+                                </Button>
+                                
                             </StackPanel>
+
+                            <!--Logout Button-->
                             <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 20 15" Click="logout_btn">
                                 <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5">
                                     <Icon:PackIconMaterial Kind="LogoutVariant" Style="{StaticResource menuButtonIcon}"/>

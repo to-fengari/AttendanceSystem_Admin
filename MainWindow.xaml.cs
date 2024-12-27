@@ -14,10 +14,6 @@ using prototype.ViewModel;
 
 namespace prototype
 {
-   
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public List<string> EventList { get; set; } = new List<string>();
@@ -38,9 +34,9 @@ namespace prototype
         private bool isMaximized = false;
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ClickCount == 2)
+            if (e.ClickCount == 2)
             {
-                if(isMaximized)
+                if (isMaximized)
                 {
                     this.WindowState = WindowState.Normal;
                     this.Width = 1080;
@@ -51,31 +47,31 @@ namespace prototype
             }
         }
 
-
         private void Dashboardbtn(object sender, RoutedEventArgs e)
         {
-
             foreach (UIElement element in MenuContainer.Children)
             {
-                if(element is Button button)
+                if (element is Button button)
                 {
                     button.Tag = false;
                 }
             }
 
             Button? clickedButton = sender as Button;
-            if(clickedButton != null)
+            if (clickedButton != null)
             {
                 clickedButton.Tag = true;
             }
 
-            //display na part
-            dashboard dashboard = new dashboard();
+            dashboard dashboard = new dashboard(string.Empty);
             MainDisplay.Content = dashboard;
         }
 
+
         private void Ceeventbtn_Click(object sender, RoutedEventArgs e)
         {
+            bool isEditing = false;
+            int eventId = 0;
             foreach (UIElement element in MenuContainer.Children)
             {
                 if (element is Button button)
@@ -90,8 +86,7 @@ namespace prototype
                 clickedButton.Tag = true;
             }
 
-            // Create an instance of Cevent and display it in MainDisplay
-            Cevent cevent = new Cevent(MainDisplay);
+            Cevent cevent = new Cevent(MainDisplay, isEditing, eventId);
             MainDisplay.Content = cevent;
         }
 
@@ -113,7 +108,6 @@ namespace prototype
 
             if (MainDisplay != null)
             {
-                // Pass the MainDisplay control to the Event class
                 Event eventView = new Event(MainDisplay);
 
                 if (Application.Current.MainWindow is MainWindow mainWindow)
@@ -138,20 +132,8 @@ namespace prototype
             }
         }
 
-
-        private void Close_Click(object sender, RoutedEventArgs e)
+        private void StudentList_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void Min_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void Homebtn(object sender, RoutedEventArgs e)
-        {
-            // Highlight the Home button
             foreach (UIElement element in MenuContainer.Children)
             {
                 if (element is Button button)
@@ -166,26 +148,93 @@ namespace prototype
                 clickedButton.Tag = true;
             }
 
-            // Load the Home view
+            StudentList studentList = new StudentList();
+            MainDisplay.Content = studentList;
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Min_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void Homebtn(object sender, RoutedEventArgs e)
+        {
+            foreach (UIElement element in MenuContainer.Children)
+            {
+                if (element is Button button)
+                {
+                    button.Tag = false;
+                }
+            }
+
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                clickedButton.Tag = true;
+            }
+
             LoadHomeView();
         }
 
         private void LoadHomeView()
         {
-            // Create an instance of the Home view and display it
-            Home homeView = new Home(); // Assuming HomeView is the name of your home content view
+            Home homeView = new Home();
             MainDisplay.Content = homeView;
         }
 
         private void logout_btn(object sender, RoutedEventArgs e)
         {
-            // Create and show the Login window
             Login loginWindow = new Login();
             loginWindow.Show();
 
-            // Close the current MainWindow instance
             this.Close();
         }
+
+        private void htu_Click(object sender, RoutedEventArgs e)
+        {
+            Howtouse howtouse = new Howtouse();
+
+            MainDisplay.Content = howtouse;
+
+            foreach (UIElement element in MenuContainer.Children)
+            {
+                if (element is Button button)
+                {
+                    button.Tag = false;
+                }
+            }
+            Button clickedButton = sender as Button;
+
+            if (clickedButton != null)
+            {
+                clickedButton.Tag = true;
+            }
+        }
+
+        public void HighlightEventButton()
+        {
+            foreach (UIElement element in MenuContainer.Children)
+            {
+                if (element is Button button)
+                {
+                    button.Tag = false;
+                }
+            }
+
+            foreach (UIElement element in MenuContainer.Children)
+            {
+                if (element is Button button && button.Name == "EventButton")
+                {
+                    button.Tag = true;
+                    break;
+                }
+            }
+        }
     }
-   
+
 }

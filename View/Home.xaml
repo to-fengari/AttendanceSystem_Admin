@@ -12,11 +12,11 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
             <TextBlock FontSize="40" FontWeight="Bold" TextAlignment="Center" Margin="0, 20, 0, 0" FontStyle="Italic"> 
                 <Run Text="Welcome to" Foreground="Black" /> 
-                <Run Text="Mga Ga, Go Attendance!" Foreground="#b20a07" />
+                <Run Text="Go Attendance!" Foreground="#b20a07" />
             </TextBlock>
-            <TextBlock Text="Transforming Attendance with QR Code Technology" Foreground="#6c757d"
+            <TextBlock Text="         Transforming Attendance with QR Code Technology" Foreground="#6c757d"
                        FontSize="23" FontWeight="Bold" FontFamily="Arial"
-                       Margin="28,0,0,0" Width="714"/>
+                       Margin="28,0,0,0" Width="714" />
 
             <TextBlock Margin="20,60,0,0" FontSize="20" FontWeight="Bold" Width="722"> 
                 <Run Text="About the" Foreground="#f98800" />
@@ -40,7 +40,6 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <!--keep lng left margin to 40 kay dli siya uniform pag run sa code-->
                 <TextBlock Grid.Column="0"
                            Margin="40 10 0 0" FontSize="18" FontFamily="Roboto"
                            TextWrapping="Wrap">
@@ -63,8 +62,6 @@
                 </TextBlock>
 
             </Grid>
-            
-
         </StackPanel>
 
         <TextBlock Text="Attendance Made Simple, One Scan at a Time!" 
@@ -72,6 +69,5 @@
                    TextAlignment="Center" Margin="0, 0, 0, 20" 
                    VerticalAlignment="Bottom" HorizontalAlignment="Center"
                    FontStyle="Italic"/>
-       
     </Grid>
 </UserControl>

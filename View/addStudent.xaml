@@ -1,0 +1,59 @@
+﻿<Window x:Class="prototype.View.addStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prototype.View"
+        mc:Ignorable="d"
+        Title="Add Student" Height="270" Width="450" ResizeMode="NoResize" Icon="/Image/ud.png"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="83*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
+            <TextBlock Text="Student Number:" Margin="5,0,0,5"/>
+            <TextBox x:Name="StudentNumberTextBox" Margin="20,0,10,0" Width="100"
+                     HorizontalAlignment="Left"
+                     PreviewTextInput="StudentNumberTextBox_PreviewTextInput" 
+                     TextChanged="StudentNumberTextBox_TextChanged"/>
+
+            <TextBlock Text="Student Name:" Margin="5,0,0,5"/>
+            <TextBox x:Name="StudentNameTextBox" Margin="20,0,10,0"/>
+
+            <TextBlock Text="Department:" Margin="5,0,0,5"/>
+            <ComboBox x:Name="DepartmentComboBox" Margin="20,0,0,0" Width="75" HorizontalAlignment="Left">
+                <ComboBoxItem Content="BED"/>
+                <ComboBoxItem Content="CAE"/>
+                <ComboBoxItem Content="CAFAE"/>
+                <ComboBoxItem Content="CASE"/>
+                <ComboBoxItem Content="CCE"/>
+                <ComboBoxItem Content="CCJE"/>
+                <ComboBoxItem Content="CEE"/>
+                <ComboBoxItem Content="CHE"/>
+                <ComboBoxItem Content="CHSE"/>
+                <ComboBoxItem Content="CTE"/>
+                <ComboBoxItem Content="TS"/>
+                <ComboBoxItem Content="PS"/>
+            </ComboBox>
+
+            <TextBlock Text="Password:" Margin="5,0,0,5"/>
+            <PasswordBox x:Name="PasswordBox" Margin="20,0,10,15"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                
+                <Button Content="Upload .CSV File" Width="120" Height="20" Margin="0,0,5,0" Click="UplaodCSVFileButton_Click" HorizontalAlignment="Left"/>
+                <Image Source="/Image/info_icon.png" Width="20" Height="20" Margin="0,5,95,5" 
+                       ToolTip="Expected CSV format: 
+                                 Student_Number,Student_Name,Department,Password
+                                 Example: 
+                                 123456,Juan Dela Cruz,BED,password123" 
+                       MouseEnter="InfoIcon_MouseEnter" 
+                       MouseLeave="InfoIcon_MouseLeave"/>
+                <Button Content="Cancel" Width="75" Height="20" Margin="5" Click="CancelButton_Click"/>
+                <Button Content="Confirm" Width="75" Height="20" Margin="5" Click="ConfirmButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

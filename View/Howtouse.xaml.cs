@@ -15,9 +15,12 @@ using System.Windows.Shapes;
 
 namespace prototype.View
 {
-    public partial class Home : UserControl
+    /// <summary>
+    /// Interaction logic for Howtouse.xaml
+    /// </summary>
+    public partial class Howtouse : UserControl
     {
-        public Home()
+        public Howtouse()
         {
             InitializeComponent();
         }

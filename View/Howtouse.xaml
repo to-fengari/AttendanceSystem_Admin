@@ -1,0 +1,196 @@
+﻿<UserControl x:Class="prototype.View.Howtouse"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:prototype.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="1600" d:DesignWidth="800"
+             Style="{StaticResource Page_Style}"
+             Background="Transparent">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10">
+        <StackPanel>
+            <!--Header-->
+            <Border Background="white" Width="412" HorizontalAlignment="Left" CornerRadius="10" Height="60">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="10,10,0,20"> 
+                <Run Text="How to Use the" />
+                <Run Text="Attendance System" FontStyle="Italic" Foreground="#b20a07"/>
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <!--for spacing-->
+            <TextBlock Text="
+                       
+                       "/>
+
+            <Border Background="white" CornerRadius="10">
+                <TextBlock Text="Using our attendance system is a breeze and ensures accurate tracking of your attendance. Whether you're a student or an employee, follow our straightforward guidelines to get the most out of the system. We've compiled the best tips and tricks to help you navigate easily, so you never miss a check-in or record." 
+                       TextWrapping="Wrap" FontSize="20" Margin="10,10,0,10"/>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <TextBlock Text="
+                        "/>
+
+            <Border Background="white" CornerRadius="10" Width="195" Height="35" HorizontalAlignment="Left" Margin="10,10,0,0">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="10,0,0,0">
+                    <Run Text="Create an" />
+                    <Run Text="Event" Foreground="#b20a07" FontStyle="italic"/>
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <TextBlock Text="
+                        "/>
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht1.png" 
+                           Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                        <Run Text="• Click Create Event." FontWeight="Bold"/>
+                        <Run Text="First thing to do, assuming you have no current active events you should click the Create Event. Then you're able to create an event. " />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="White" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht2.png"
+                           Stretch="fill" Height="250" Width="300"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Name Event." FontWeight="Bold"/>
+                            <Run Text="Under the label, click the textbox to enter the name of your event." />
+                            <Run Text="
+                                                  " />
+                            <Run Text="• Date and Time." FontWeight="Bold"/>
+                            <Run Text="Choose the proper date and time." />
+                            <Run Text="
+                                 *Fill in all required fields to click Choose Department" FontStyle="Italic"/>
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="White" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht3.png"
+                               Height="250" Width="300" Margin="0,0,0,0"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                        <Run Text="• Choose Department." FontWeight="Bold"/>
+                        <Run Text="Choose and click departments that is included to your created event, then click confirm. " />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+
+            <TextBlock Text="
+           "/>
+
+            <Border Background="white" CornerRadius="10" Width="239" Height="35" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="10,0,-15,0">
+                    <Run Text="Event" />
+                    <Run Text="Management" Foreground="#b20a07" FontStyle="Italic"/>
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <TextBlock Text="
+"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht4.png"
+                           Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                        <Run Text="• Click Events." FontWeight="Bold"/>
+                        <Run Text="To access data, you should click Events" />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

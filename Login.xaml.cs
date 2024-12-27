@@ -8,21 +8,17 @@ namespace prototype.View
 {
     public partial class Login : Window
     {
-        // SQL Server connection string (update with your server details)
-        private readonly string connectionString = @"Server=MSI\SQLEXPRESS01; Database=LoginDB; Integrated Security=True; Encrypt=True; TrustServerCertificate=True";
+        private readonly string connectionString = App.ConnectionString;
         public Login()
         {
             InitializeComponent();
         }
 
-        // Event handler for the minimize button click
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
-            // Minimize the current window
             this.WindowState = WindowState.Minimized;
         }
 
-        // Event handler for the login button click
         private void loginmin_Click(object sender, RoutedEventArgs e)
         {
             string name = username.Text;
@@ -30,19 +26,19 @@ namespace prototype.View
 
             if (IsValidUser(name, pass))
             {
-                // If login is successful, show the main dashboard
+                UserSession.CurrentUsername = name;
+                UserSession.CurrentPassword = pass;
+
                 var dashboard = new MainWindow();
                 dashboard.Show();
                 this.Close();
             }
             else
             {
-                // If login fails, show an error message
                 MessageBox.Show("Invalid username or password", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        // Method to validate username and password against the database
         private bool IsValidUser(string username, string password)
         {
             bool isValid = false;
@@ -51,7 +47,7 @@ namespace prototype.View
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT COUNT(*) FROM Users WHERE username = @username AND password = @password";
+                    string query = "SELECT COUNT(*) FROM users.Admin_Users WHERE username = @username AND password = @password";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -90,9 +86,14 @@ namespace prototype.View
         {
             if (e.Key == Key.Enter)
             {
-                // Explicitly call the loginmin_Click method
                 loginmin_Click(loginmin_Click, new RoutedEventArgs());
             }
         }
+    }
+
+    public static class UserSession
+    {
+        public static string CurrentUsername { get; set; }
+        public static string CurrentPassword { get; set; }
     }
 }

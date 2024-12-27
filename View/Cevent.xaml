@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="850"
              Style="{StaticResource Page_Style}"
-             Background="White">
+             Background="Transparent">
 
     <Border BorderBrush="Black" BorderThickness="0"
-            CornerRadius="2" Padding="10" Background="White">
+            CornerRadius="2" Padding="10" Background="Transparent">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.5"/>
         </Border.Effect>
@@ -21,12 +21,12 @@
             </Grid.RowDefinitions>
 
             <!--Title-->
-            <TextBlock Grid.Row="0" Text="Create Event"
-                       FontSize="24" FontWeight="SemiBold"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left" Margin="0,0,0,20"
-                       FontStyle="Italic" FontFamily="Arial" Foreground="#333333"/>
-            <Border CornerRadius="10" BorderBrush="#6c757d" BorderThickness="2" Background="Transparent" Margin="73,63,73,76" Grid.Row="1">
+            <TextBlock x:Name="CeventTitle" Grid.Row="0" Text="Create Event"
+                   FontSize="24" FontWeight="SemiBold"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left" Margin="0,0,0,20"
+                   FontStyle="Italic" FontFamily="Arial" Foreground="#333333"/> 
+            <Border CornerRadius="10" BorderBrush="#6c757d" BorderThickness="2" Background="White" Margin="73,63,73,76" Grid.Row="1">
                 <StackPanel Margin="10">
                     <TextBlock Text="Name of Event:" FontWeight="Bold" FontSize="20" Margin="0,0,0,10" />
                     <TextBox x:Name="EventNameTextBox" Width="500" Height="30" Margin="0,0,0,10">
@@ -58,19 +58,31 @@
 
                         <StackPanel>
                             <TextBlock Text="Start Date" FontSize="16" Margin="100,10,0,15" Grid.Column="0"/>
-                            <DatePicker x:Name="StartDatePicker" Margin="100,0,0,5" Width="144" 
-                                        HorizontalAlignment="Left" FontFamily="Arial"/>
+
+                            <DatePicker x:Name="StartDatePicker" Margin="100,0,0,5" Width="144" HorizontalAlignment="Left" FontFamily="Arial" >
+                                <DatePicker.Resources>
+                                    <Style TargetType="DatePickerTextBox">
+                                        <Setter Property="IsReadOnly" Value="True"/>
+                                    </Style>
+                                </DatePicker.Resources>
+                            </DatePicker>
 
                             <TextBlock Text="End Date" FontSize="16" Margin="100,10,0,15" />
-                            <DatePicker x:Name="EndDatePicker" Margin="100,0,0,5" Width="144"
-                                        HorizontalAlignment="Left" FontFamily="Arial"/>
+
+                            <DatePicker x:Name="EndDatePicker" Margin="100,0,0,5" Width="144" HorizontalAlignment="Left" FontFamily="Arial">
+                                <DatePicker.Resources>
+                                    <Style TargetType="DatePickerTextBox">
+                                        <Setter Property="IsReadOnly" Value="True"/>
+                                    </Style>
+                                </DatePicker.Resources>
+                            </DatePicker>
 
                         </StackPanel>
 
                         <StackPanel Grid.Column="1">
                             <TextBlock Text="Start Time" FontSize="16" Margin="20,10,0,15" Grid.Column="1"/>
                             <ComboBox x:Name="StartTimeComboBox" Width="144"
-                                      HorizontalAlignment="Left" Margin="20,0,0,0">
+                                      HorizontalAlignment="Left" Margin="20,0,0,0" BorderThickness="0">
                                 <ComboBoxItem Content="07:00 AM" />
                                 <ComboBoxItem Content="08:00 AM" />
                                 <ComboBoxItem Content="09:00 AM" />
@@ -87,9 +99,9 @@
                                 <ComboBoxItem Content="08:00 PM" />
                             </ComboBox>
 
-                            <TextBlock Text="End Time" FontSize="16" Margin="20,10,0,15" Grid.Column="1" Width="428"/>
+                            <TextBlock Text="End Time" FontSize="16" Margin="20,16,0,15" Grid.Column="1" Width="428"/>
                             <ComboBox x:Name="EndTimeComboBox" Width="144"
-                                      HorizontalAlignment="Left" Margin="20,0,0,0" >
+                                      HorizontalAlignment="Left" Margin="20,1,0,0" BorderThickness="0">
                                 <ComboBoxItem Content="08:00 AM" />
                                 <ComboBoxItem Content="09:00 AM" />
                                 <ComboBoxItem Content="10:00 AM" />

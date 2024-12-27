@@ -3,18 +3,84 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    d:DesignHeight="600" d:DesignWidth="850"
+    Style="{StaticResource Page_Style}">
 
     <Grid>
-        <ListView x:Name="DepartmentListView" Margin="10">
+        <ListView x:Name="DepartmentListView" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  BorderThickness="0">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="FontSize" Value="17" />
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                    <Setter Property="FontSize" Value="17" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+                <Style TargetType="Button" x:Key="RoundedButtonStyle">
+                    <Setter Property="Background" Value="#b20a07"/>
+                    <Setter Property="Foreground" Value="#f5cf28"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="FontSize" Value="17"/>
+                    <Setter Property="BorderBrush" Value="#b20a07"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Width" Value="140" />
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="HorizontalAlignment" Value="center" />
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#e19238"/>
+                            <Setter Property="Foreground" Value="#ffffff"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Resources>
             <ListView.View>
+                
                 <GridView>
-                    <GridViewColumn Header="Department Name" DisplayMemberBinding="{Binding DepartmentName}" Width="200"/>
-                    <GridViewColumn Header="Action">
+                    <GridViewColumn Header="Department Name" DisplayMemberBinding="{Binding DepartmentName}" Width="425">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="View Attendees" Click="ViewDetails_Click" 
-                                        Tag="{Binding DepartmentName}" Margin="5"/>
+                                <TextBlock Text="{Binding DepartmentName}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Action" Width="425">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="View Attendees" Click="ViewDetails_Click" Tag="{Binding DepartmentName}" Margin="5"
+                                        Style="{StaticResource RoundedButtonStyle}" FontSize="14"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

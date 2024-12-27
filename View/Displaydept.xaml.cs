@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +10,7 @@ namespace prototype.View
 {
     public partial class Displaydept : UserControl
     {
-        private readonly string connectionString = @"Server=MSI\SQLEXPRESS01; Database=LoginDB; Integrated Security=True;TrustServerCertificate=True;";
+        private readonly string connectionString = App.ConnectionString;
         public ContentControl MainDisplay { get; set; }
         private int EventID { get; set; }
 
@@ -24,25 +25,32 @@ namespace prototype.View
 
         private void LoadDepartments()
         {
-            List<DepartmentModel> departments = new List<DepartmentModel>();
+            ObservableCollection<DepartmentModel> departments = new ObservableCollection<DepartmentModel>();
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT DepartmentName FROM SelectedDepartments WHERE EventID = @EventID";
+                    string query = "SELECT Departments FROM event.Event_List WHERE EventID = @EventID";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@EventID", EventID);
                     connection.Open();
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read())
                         {
-                            departments.Add(new DepartmentModel
+                            // Assuming Departments is a concatenated string
+                            string departmentsString = reader.GetString(0);
+                            var departmentNames = departmentsString.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+
+                            foreach (var departmentName in departmentNames)
                             {
-                                DepartmentName = reader.GetString(0)
-                            });
+                                departments.Add(new DepartmentModel
+                                {
+                                    DepartmentName = departmentName
+                                });
+                            }
                         }
                     }
                 }
@@ -64,6 +72,7 @@ namespace prototype.View
             var listWindow = new list(departmentName, EventID);
             listWindow.Show();
         }
+
     }
 
     public class DepartmentModel
