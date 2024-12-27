@@ -60,6 +60,16 @@ namespace prototype.View
             }
         }
 
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EventComboBox.SelectedItem != null)
+            {
+                string selectedEventName = EventComboBox.SelectedItem.ToString();
+                LoadData(selectedEventName);
+            }
+        }
+
+
         private void EventComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (EventComboBox.SelectedItem != null)
@@ -218,11 +228,11 @@ namespace prototype.View
 
         public Func<double, string> LabelFormatter => value =>
         {
-            if (value >= 0 && value < Labels.Length)
+            if (value >= 0 && value < Labels.Length) 
             {
                 return Labels[(int)value];
             }
             return string.Empty;
-        };
+        };   
     }
 }

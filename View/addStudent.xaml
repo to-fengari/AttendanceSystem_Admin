@@ -42,17 +42,25 @@
             <PasswordBox x:Name="PasswordBox" Margin="20,0,10,15"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                
-                <Button Content="Upload .CSV File" Width="120" Height="20" Margin="0,0,5,0" Click="UplaodCSVFileButton_Click" HorizontalAlignment="Left"/>
-                <Image Source="/Image/info_icon.png" Width="20" Height="20" Margin="0,5,95,5" 
-                       ToolTip="Expected CSV format: 
-                                 Student_Number,Student_Name,Department,Password
-                                 Example: 
-                                 123456,Juan Dela Cruz,BED,password123" 
-                       MouseEnter="InfoIcon_MouseEnter" 
-                       MouseLeave="InfoIcon_MouseLeave"/>
-                <Button Content="Cancel" Width="75" Height="20" Margin="5" Click="CancelButton_Click"/>
-                <Button Content="Confirm" Width="75" Height="20" Margin="5" Click="ConfirmButton_Click"/>
+                <Button Content="Upload .CSV File" Width="120" Height="20" Margin="2,0,5,0"
+                        Click="UploadCSVFileButton_Click"/>
+                <Image Source="/Image/info.ico" Width="20" Height="20" Margin="0,5,95,5">
+                    <Image.ToolTip>
+                        <TextBlock>
+                            Format: 
+                            <LineBreak/>
+                            Student_Number, Student_Name, Department, Password
+                            <LineBreak/>
+                            Example:
+                            <LineBreak/>
+                            123456, Juan Dela Cruz, BED, password123
+                        </TextBlock>
+                    </Image.ToolTip>
+                </Image>
+                <Button Content="Cancel" Width="75" Height="20" Margin="5"
+                        Click="CancelButton_Click"/>
+                <Button Content="Confirm" Width="75" Height="20" Margin="5"
+                        Click="ConfirmButton_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

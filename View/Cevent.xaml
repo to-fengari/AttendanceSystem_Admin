@@ -59,7 +59,8 @@
                         <StackPanel>
                             <TextBlock Text="Start Date" FontSize="16" Margin="100,10,0,15" Grid.Column="0"/>
 
-                            <DatePicker x:Name="StartDatePicker" Margin="100,0,0,5" Width="144" HorizontalAlignment="Left" FontFamily="Arial" >
+                            <DatePicker x:Name="StartDatePicker" Margin="100,0,0,5" Width="144" HorizontalAlignment="Left" FontFamily="Arial" 
+                                        SelectedDateChanged="StartDatePicker_SelectedDateChanged">
                                 <DatePicker.Resources>
                                     <Style TargetType="DatePickerTextBox">
                                         <Setter Property="IsReadOnly" Value="True"/>
@@ -69,7 +70,8 @@
 
                             <TextBlock Text="End Date" FontSize="16" Margin="100,10,0,15" />
 
-                            <DatePicker x:Name="EndDatePicker" Margin="100,0,0,5" Width="144" HorizontalAlignment="Left" FontFamily="Arial">
+                            <DatePicker x:Name="EndDatePicker" Margin="100,0,0,5" Width="144" HorizontalAlignment="Left" FontFamily="Arial"
+                                        SelectedDateChanged="EndDatePicker_SelectedDateChanged">
                                 <DatePicker.Resources>
                                     <Style TargetType="DatePickerTextBox">
                                         <Setter Property="IsReadOnly" Value="True"/>
