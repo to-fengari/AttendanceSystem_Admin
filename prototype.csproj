@@ -30,6 +30,7 @@
     <None Remove="Image\enht3.png" />
     <None Remove="Image\enht4.png" />
     <None Remove="Image\enreclogo.png" />
+    <None Remove="Image\info.ico" />
     <None Remove="Image\lock.png" />
     <None Remove="Image\newlogo.png" />
     <None Remove="Image\new_cce.png" />
@@ -109,6 +110,7 @@
     <Resource Include="Image\enreclogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\info.ico" />
     <Resource Include="Image\lock.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

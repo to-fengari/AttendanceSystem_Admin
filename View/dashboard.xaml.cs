@@ -228,11 +228,11 @@ namespace prototype.View
 
         public Func<double, string> LabelFormatter => value =>
         {
-            if (value >= 0 && value < Labels.Length)
+            if (value >= 0 && value < Labels.Length) 
             {
                 return Labels[(int)value];
             }
             return string.Empty;
-        };
+        };   
     }
 }

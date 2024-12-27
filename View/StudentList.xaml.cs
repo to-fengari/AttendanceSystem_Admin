@@ -99,22 +99,25 @@ namespace prototype.View
             LoadStudents("PS");
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var addStudentWindow = new addStudent();
             addStudentWindow.ShowDialog();
+            await LoadAllStudents();
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             var deleteStudentWindow = new deleteStudent();
             deleteStudentWindow.ShowDialog();
+            await LoadAllStudents();
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             var updateStudentWindow = new updateStudent();
            updateStudentWindow.ShowDialog();
+            await LoadAllStudents();
         }
 
         public class Student
@@ -211,7 +214,6 @@ namespace prototype.View
                 _selectedButton.BorderThickness = new Thickness(1);
             }
 
-            // Set the new selected button
             _selectedButton = button;
             _selectedButton.Tag = true;
             _selectedButton.Background = new SolidColorBrush(Color.FromRgb(245, 207, 40));

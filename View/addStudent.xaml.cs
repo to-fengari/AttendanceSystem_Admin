@@ -50,21 +50,24 @@ namespace prototype.View
                 Password = PasswordBox.Password
             };
 
-            bool isSaved = await SaveStudentToDatabase(student);
+            UserAuthentication authWindow = new UserAuthentication();
+            if (authWindow.ShowDialog() == true) {
+                bool isSaved = await SaveStudentToDatabase(student);
+                    if (isSaved)
+                        {
+                            StudentNumberTextBox.Clear();
+                            StudentNameTextBox.Clear();
+                            DepartmentComboBox.SelectedIndex = -1;
+                            PasswordBox.Clear();
 
-            if (isSaved)
-            {
-                StudentNumberTextBox.Clear();
-                StudentNameTextBox.Clear();
-                DepartmentComboBox.SelectedIndex = -1;
-                PasswordBox.Clear();
-
-                MessageBox.Show("Student added successfully.");
-            }
-            else
-            {
-                MessageBox.Show("Failed to add student. Please try again.");
-            }
+                            MessageBox.Show("Student added successfully.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to add student. Please try again.");
+                        };
+                    }
+            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -72,7 +75,7 @@ namespace prototype.View
             this.Close();
         }
 
-        private async void UplaodCSVFileButton_Click(object sender, RoutedEventArgs e)
+        private async void UploadCSVFileButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -92,37 +95,36 @@ namespace prototype.View
 
                 try
                 {
-                    using (var reader = new StreamReader(filePath))
-                    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                    UserAuthentication authWindow = new UserAuthentication();
+                    if (authWindow.ShowDialog() == true)
                     {
-                        var records = csv.GetRecords<Student>();
-
-                        foreach (var student in records)
+                        using (var reader = new StreamReader(filePath))
+                        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                         {
-                            bool exists = await StudentNumberExists(student.StudentNumber);
-                            if (exists)
-                            {
-                                MessageBoxResult result = MessageBox.Show(
-                                    $"The student number {student.StudentNumber} already exists. Would you like to skip this entry or cancel the operation?",
-                                    "Student Number Exists",
-                                    MessageBoxButton.YesNo,
-                                    MessageBoxImage.Warning);
+                            var records = csv.GetRecords<Student>();
 
-                                if (result == MessageBoxResult.No)
+                            foreach (var student in records)
+                            {
+                                if (await StudentNumberExists(student.StudentNumber))
                                 {
-                                    MessageBox.Show("Operation cancelled.");
-                                    return;
-                                }
-                                continue;
-                            }
+                                    MessageBoxResult result = MessageBox.Show(
+                                        $"The student number {student.StudentNumber} already exists. Would you like to skip this entry or cancel the operation?",
+                                        "Student Number Exists",
+                                        MessageBoxButton.YesNo,
+                                        MessageBoxImage.Warning);
 
-                            UserAuthentication authWindow = new UserAuthentication();
-                            if (authWindow.ShowDialog() == true)
-                            {
-                                bool deleted = await SaveStudentToDatabase(student);
+                                    if (result == MessageBoxResult.No)
+                                    {
+                                        MessageBox.Show("Operation cancelled.");
+                                        return;
+                                    }
+                                    continue;
+                                }
+                                await SaveStudentToDatabase(student);
+
                             }
-                            
                         }
+
                     }
 
                     MessageBox.Show("CSV file processed successfully.");
@@ -137,6 +139,7 @@ namespace prototype.View
         private bool ValidateCSVFormat(string filePath)
         {
             string[] expectedHeaders = { "StudentNumber", "StudentName", "Department", "Password" };
+            var validDepartments = new HashSet<string> { "BED", "CAE", "CAFAE", "CASE", "CCE", "CCJE", "CEE", "CHE", "CHSE", "CTE", "TS", "PS" };
 
             using (var reader = new StreamReader(filePath))
             {
@@ -163,7 +166,21 @@ namespace prototype.View
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
-                    if (line.Split(',').Length != headers.Length)
+                    string[] fields = line.Split(',');
+
+                    if (fields.Length != headers.Length)
+                    {
+                        return false;
+                    }
+
+                    string studentNumber = fields[0].Trim();
+                    if (studentNumber.Length != 6 || !Regex.IsMatch(studentNumber, @"^\d{6}$"))
+                    {
+                        return false;
+                    }
+
+                    string department = fields[2].Trim();
+                    if (!validDepartments.Contains(department))
                     {
                         return false;
                     }

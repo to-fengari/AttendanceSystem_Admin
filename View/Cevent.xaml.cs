@@ -19,6 +19,8 @@ namespace prototype.View
             this.eventId = eventId;
             this.isEditing = isEditing;
 
+            SetDatePickers();
+
             if (isEditing == true)
             {
                 CeventTitle.Text = "Edit Event";
@@ -30,6 +32,12 @@ namespace prototype.View
                 CeventTitle.Text = "Create New Event";
                 CreateNewEvent();
             }
+        }
+
+        private void SetDatePickers()
+        {
+            StartDatePicker.DisplayDateStart = DateTime.Today.AddDays(1);
+            EndDatePicker.DisplayDateStart = DateTime.Today.AddDays(1);
         }
 
         private void LoadEventDetails(int eventId)
@@ -140,6 +148,24 @@ namespace prototype.View
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}\n\n{ex.StackTrace}");
+            }
+        }
+
+        private void StartDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (EndDatePicker.SelectedDate < StartDatePicker.SelectedDate)
+            {
+                MessageBox.Show("End Date must be on or after Start Date.", "Invalid Date Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                EndDatePicker.SelectedDate = StartDatePicker.SelectedDate; 
+            }
+        }
+
+        private void EndDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (EndDatePicker.SelectedDate < StartDatePicker.SelectedDate)
+            {
+                MessageBox.Show("End Date must be on or after Start Date.", "Invalid Date Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                EndDatePicker.SelectedDate = StartDatePicker.SelectedDate; 
             }
         }
     }
