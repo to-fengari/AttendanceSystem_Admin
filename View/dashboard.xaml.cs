@@ -60,6 +60,16 @@ namespace prototype.View
             }
         }
 
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EventComboBox.SelectedItem != null)
+            {
+                string selectedEventName = EventComboBox.SelectedItem.ToString();
+                LoadData(selectedEventName);
+            }
+        }
+
+
         private void EventComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (EventComboBox.SelectedItem != null)

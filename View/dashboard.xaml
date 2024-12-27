@@ -23,11 +23,46 @@
 
             <Grid Grid.Column="0">
                 <StackPanel>
-                    <TextBlock Text="Event(s):"
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="⟳" Click="RefreshButton_Click" Width="50">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20" Padding="10">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Background" Value="#b02a24"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                    <Setter Property="FontFamily" Value="Montserrat"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Setter Property="Margin" Value="10"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#e19238"/>
+                                            <Setter Property="Foreground" Value="#ffffff"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <TextBlock Text="Event(s):"
                                FontSize="24" 
                                FontWeight="Bold"
-                               Padding="10"
-                               Margin="15,0,0,0"/>
+                               Padding="0"
+                               VerticalAlignment="Center"
+                               Width="117"
+                               />
+
+                    </StackPanel>
+
                     <ComboBox Name="EventComboBox" 
                           Width="350" 
                           Height="35" 
@@ -39,6 +74,8 @@
                           FontSize="17"
                           BorderThickness="0"
                           Background="White"/>
+
+
                 </StackPanel>
             </Grid>
 
@@ -59,13 +96,15 @@
                            HorizontalAlignment="Left"
                            FontSize="14"
                            FontWeight="SemiBold"
-                           FontFamily="Arial"/> 
+                           FontFamily="Arial"/>
                         <TextBlock Text="{Binding TotalStudents}" 
                            FontSize="24" 
                            FontWeight="Bold" 
                            Foreground="Black" 
                            HorizontalAlignment="Center"/>
                     </StackPanel>
+
+
                 </Border>
             </Grid>
         </Grid>
