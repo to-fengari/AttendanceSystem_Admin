@@ -148,7 +148,7 @@ namespace prototype.View
             }
 
             if (StudentNumberTextBox.Text.Length > 6)
-            {
+            { 
                 StudentNumberTextBox.Text = StudentNumberTextBox.Text.Substring(0, 6);
                 StudentNumberTextBox.SelectionStart = StudentNumberTextBox.Text.Length;
             }

@@ -36,8 +36,8 @@ namespace prototype.View
 
         private void SetDatePickers()
         {
-            StartDatePicker.DisplayDateStart = DateTime.Today.AddDays(1);
-            EndDatePicker.DisplayDateStart = DateTime.Today.AddDays(1);
+            StartDatePicker.DisplayDateStart = DateTime.Today;
+            EndDatePicker.DisplayDateStart = DateTime.Today;
         }
 
         private void LoadEventDetails(int eventId)

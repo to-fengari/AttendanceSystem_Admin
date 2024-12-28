@@ -91,7 +91,7 @@
                         <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
                     </Border.Effect>
                     <StackPanel>
-                        <TextBlock Text="NUMBER OF STUDENT(S):"
+                        <TextBlock Text="TOTAL STUDENT(S):"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            FontSize="14"

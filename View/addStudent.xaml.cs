@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,8 +11,6 @@ using System.Windows.Input;
 using Microsoft.Data.SqlClient;
 using CsvHelper;
 using Microsoft.Win32;
-using System.Globalization;
-using System.IO;
 
 namespace prototype.View
 {
@@ -51,23 +50,27 @@ namespace prototype.View
             };
 
             UserAuthentication authWindow = new UserAuthentication();
-            if (authWindow.ShowDialog() == true) {
+            if (authWindow.ShowDialog() == true)
+            {
                 bool isSaved = await SaveStudentToDatabase(student);
-                    if (isSaved)
-                        {
-                            StudentNumberTextBox.Clear();
-                            StudentNameTextBox.Clear();
-                            DepartmentComboBox.SelectedIndex = -1;
-                            PasswordBox.Clear();
+                if (isSaved)
+                {
+                    ClearInputFields();
+                    MessageBox.Show("Student added successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add student. Please try again.");
+                }
+            }
+        }
 
-                            MessageBox.Show("Student added successfully.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to add student. Please try again.");
-                        };
-                    }
-            
+        private void ClearInputFields()
+        {
+            StudentNumberTextBox.Clear();
+            StudentNameTextBox.Clear();
+            DepartmentComboBox.SelectedIndex = -1;
+            PasswordBox.Clear();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -101,7 +104,7 @@ namespace prototype.View
                         using (var reader = new StreamReader(filePath))
                         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                         {
-                            var records = csv.GetRecords<Student>();
+                            var records = csv.GetRecords<Student>().ToList();
 
                             foreach (var student in records)
                             {
@@ -121,10 +124,8 @@ namespace prototype.View
                                     continue;
                                 }
                                 await SaveStudentToDatabase(student);
-
                             }
                         }
-
                     }
 
                     MessageBox.Show("CSV file processed successfully.");
@@ -195,30 +196,23 @@ namespace prototype.View
             e.Handled = !IsTextAllowed(e.Text);
         }
 
-        private void StudentNumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private async void StudentNumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (StudentNumberTextBox.Text.Length > 6)
-            {
-                StudentNumberTextBox.Text = StudentNumberTextBox.Text.Substring(0, 6);
-                StudentNumberTextBox.SelectionStart = StudentNumberTextBox.Text.Length;
-            }
-        }
+            ErrorTextBlock.Text = string.Empty;
 
-        private void InfoIcon_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Image infoIcon = sender as Image;
-            if (infoIcon != null)
+            if (StudentNumberTextBox.Text.Length == 6)
             {
-                infoIcon.Opacity = 0.7;
-            }
-        }
+                string studentNumber = StudentNumberTextBox.Text.Trim();
+                bool studentExists = await StudentNumberExists(studentNumber);
 
-        private void InfoIcon_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Image infoIcon = sender as Image;
-            if (infoIcon != null)
-            {
-                infoIcon.Opacity = 1.0;
+                if (studentExists)
+                {
+                    ErrorTextBlock.Text = "Student with the Student Number Already Exists";
+                }
+                else
+                {
+                    ErrorTextBlock.Text = string.Empty;
+                }
             }
         }
 

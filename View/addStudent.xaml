@@ -14,11 +14,13 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.ColumnSpan="2">
             <TextBlock Text="Student Number:" Margin="5,0,0,5"/>
-            <TextBox x:Name="StudentNumberTextBox" Margin="20,0,10,0" Width="100"
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="StudentNumberTextBox" Margin="20,0,10,0" Width="100"
                      HorizontalAlignment="Left"
                      PreviewTextInput="StudentNumberTextBox_PreviewTextInput" 
                      TextChanged="StudentNumberTextBox_TextChanged"/>
-
+                <TextBlock x:Name="ErrorTextBlock" Foreground="Red" Margin="5,-10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
             <TextBlock Text="Student Name:" Margin="5,0,0,5"/>
             <TextBox x:Name="StudentNameTextBox" Margin="20,0,10,0"/>
 

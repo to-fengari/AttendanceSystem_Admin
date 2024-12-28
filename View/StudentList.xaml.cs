@@ -13,11 +13,14 @@ namespace prototype.View
     {
         private string connectionString;
         private Button _selectedButton;
+        private string _currentDepartment;
 
         public StudentList()
         {
             connectionString = App.ConnectionString;
             InitializeComponent();
+            _currentDepartment = "All";
+            AllDepartmentButton_Click(this, null);
         }
 
         private async void AllDepartmentButton_Click(object sender, RoutedEventArgs e)
@@ -99,25 +102,25 @@ namespace prototype.View
             LoadStudents("PS");
         }
 
-        private async void AddButton_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             var addStudentWindow = new addStudent();
             addStudentWindow.ShowDialog();
-            await LoadAllStudents();
+            LoadStudents(_currentDepartment);
         }
 
-        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             var deleteStudentWindow = new deleteStudent();
             deleteStudentWindow.ShowDialog();
-            await LoadAllStudents();
+            LoadStudents(_currentDepartment);
         }
 
-        private async void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             var updateStudentWindow = new updateStudent();
            updateStudentWindow.ShowDialog();
-            await LoadAllStudents();
+            LoadStudents(_currentDepartment);
         }
 
         public class Student
@@ -128,35 +131,43 @@ namespace prototype.View
 
         private async void LoadStudents(string department)
         {
-            StudentListDataGrid.ItemsSource = null;
-
-            string query = $"SELECT Student_Number, Student_Name FROM users.Student_List_{department}";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (department.Equals("ALL", StringComparison.OrdinalIgnoreCase))
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                ObservableCollection<Student> students = new ObservableCollection<Student>();
+                LoadAllStudents();
+                return;
+            }
+            else
+            {
+                StudentListDataGrid.ItemsSource = null;
 
-                try
+                string query = $"SELECT Student_Number, Student_Name FROM users.Student_List_{department}";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    await connection.OpenAsync();
-                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                    SqlCommand command = new SqlCommand(query, connection);
+                    ObservableCollection<Student> students = new ObservableCollection<Student>();
+
+                    try
                     {
-                        while (await reader.ReadAsync())
+                        await connection.OpenAsync();
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
-                            students.Add(new Student
+                            while (await reader.ReadAsync())
                             {
-                                StudentNumber = reader["Student_Number"].ToString(),
-                                StudentName = reader["Student_Name"].ToString()
-                            });
+                                students.Add(new Student
+                                {
+                                    StudentNumber = reader["Student_Number"].ToString(),
+                                    StudentName = reader["Student_Name"].ToString()
+                                });
+                            }
                         }
-                    }
 
-                    StudentListDataGrid.ItemsSource = students;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error fetching students: {ex.Message}");
+                        StudentListDataGrid.ItemsSource = students;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error fetching students: {ex.Message}");
+                    }
                 }
             }
         }
@@ -220,6 +231,8 @@ namespace prototype.View
             _selectedButton.Foreground = new SolidColorBrush(Color.FromRgb(178, 10, 7));
             _selectedButton.FontWeight = FontWeights.Bold;
             _selectedButton.BorderThickness = new Thickness(2);
+
+            _currentDepartment = button.Content.ToString();
         }
 
     }

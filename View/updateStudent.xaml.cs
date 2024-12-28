@@ -221,7 +221,6 @@ namespace prototype.View
                 {
                     try
                     {
-                        // Insert into new department
                         using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection, transaction))
                         {
                             insertCommand.Parameters.AddWithValue("@StudentNumber", studentNumber);
@@ -230,10 +229,9 @@ namespace prototype.View
                             await insertCommand.ExecuteNonQueryAsync();
                         }
 
-                        // Delete from old department
                         using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection, transaction))
                         {
-                            deleteCommand.Parameters.AddWithValue("@StudentNumber", studentNumber); // Use the same parameter name
+                            deleteCommand.Parameters.AddWithValue("@StudentNumber", studentNumber);
                             await deleteCommand.ExecuteNonQueryAsync();
                         }
 
