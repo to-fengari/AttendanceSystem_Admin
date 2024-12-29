@@ -119,7 +119,7 @@ namespace prototype.View
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             var updateStudentWindow = new updateStudent();
-           updateStudentWindow.ShowDialog();
+            updateStudentWindow.ShowDialog();
             LoadStudents(_currentDepartment);
         }
 
@@ -216,21 +216,16 @@ namespace prototype.View
 
         private void HighlightSelectedButton(Button button)
         {
+            //Wla ko kabalo ngano dili muandar ang tag. Color lang mag lahi.
             if (_selectedButton != null)
             {
                 _selectedButton.Tag = false;
-                _selectedButton.Background = new SolidColorBrush(Color.FromRgb(178, 10, 7));
-                _selectedButton.Foreground = new SolidColorBrush(Color.FromRgb(245, 207, 40));
                 _selectedButton.FontWeight = FontWeights.Normal;
-                _selectedButton.BorderThickness = new Thickness(1);
             }
 
             _selectedButton = button;
             _selectedButton.Tag = true;
-            _selectedButton.Background = new SolidColorBrush(Color.FromRgb(245, 207, 40));
-            _selectedButton.Foreground = new SolidColorBrush(Color.FromRgb(178, 10, 7));
             _selectedButton.FontWeight = FontWeights.Bold;
-            _selectedButton.BorderThickness = new Thickness(2);
 
             _currentDepartment = button.Content.ToString();
         }

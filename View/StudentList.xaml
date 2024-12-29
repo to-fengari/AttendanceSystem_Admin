@@ -16,9 +16,10 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Width" Value="140"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="BorderBrush" Value="#b20a07"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Tag" Value="False" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -31,15 +32,19 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#f5cf28"/>
-                    <Setter Property="Foreground" Value="#b20a07"/>
+                    <Setter Property="Background" Value="#e19238"/>
+                    <Setter Property="Foreground" Value="#ffffff"/>
                 </Trigger>
                 <Trigger Property="Tag" Value="True">
-                    <Setter Property="Background" Value="#f5cf28"/>
-                    <Setter Property="Foreground" Value="#b20a07"/>
+                    <Setter Property="Background" Value="#e19238"/>
+                    <Setter Property="Foreground" Value="#ffffff"/>
                     <Setter Property="FontWeight" Value="Bold"/>
                     <Setter Property="BorderThickness" Value="2"/>
                 </Trigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                    <Setter Property="Background" Value="#e19238"/>
+                    <Setter Property="Foreground" Value="#ffffff" />
+                </DataTrigger>
             </Style.Triggers>
         </Style>
 
@@ -51,9 +56,10 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Width" Value="100"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="BorderBrush" Value="#b20a07"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Tag" Value="False" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -66,14 +72,22 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#b20a07"/>
+                    <Setter Property="Background" Value="#e19238"/>
+                    <Setter Property="Foreground" Value="#ffffff"/>
                 </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" Value="#b20a07"/>
+                <Trigger Property="Tag" Value="True">
+                    <Setter Property="Background" Value="#e19238"/>
+                    <Setter Property="Foreground" Value="#ffffff"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="BorderThickness" Value="2"/>
                 </Trigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                    <Setter Property="Background" Value="#e19238"/>
+                    <Setter Property="Foreground" Value="#ffffff" />
+                </DataTrigger>
             </Style.Triggers>
         </Style>
-        
+
 
         <Style TargetType="DataGrid">
             <Setter Property="Background" Value="Transparent"/>
@@ -124,7 +138,7 @@
 
         <TextBlock Text="Department" FontSize="18" HorizontalAlignment="Center" FontWeight="Bold" Margin="20,65,10,10" />
 
-        <StackPanel Grid.Column="0" Margin="20,100,10,10">
+        <StackPanel Grid.Column="0" Margin="20,100,10,10" RenderTransformOrigin="0.5,0.5">
             <Button x:Name="AllDepartmentButton" Content="All" Style="{StaticResource DepartmentButtonStyle}" Click="AllDepartmentButton_Click" />
             <Button x:Name="BEDDepartmentButton" Content="BED" Style="{StaticResource DepartmentButtonStyle}" Click="BEDDepartmentButton_Click" />
             <Button x:Name="CAEDepartmentButton" Content="CAE" Style="{StaticResource DepartmentButtonStyle}" Click="CAEDepartmentButton_Click" />

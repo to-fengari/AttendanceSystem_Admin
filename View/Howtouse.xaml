@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:prototype.View"
              mc:Ignorable="d" 
-             d:DesignHeight="1600" d:DesignWidth="800"
+             d:DesignHeight="4600" d:DesignWidth="800"
              Style="{StaticResource Page_Style}"
              Background="Transparent">
     <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10">
@@ -33,6 +33,85 @@
                     <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
                 </Border.Effect>
             </Border>
+
+            <TextBlock Text="
+"/>
+
+            <Border Background="white" CornerRadius="10" Width="280" Height="35" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="10,0,-15,0">
+                    <Run Text="Dashboard" />
+                    <Run Text="Information" Foreground="#b20a07" FontStyle="Italic"/>
+
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <TextBlock Text="
+"/>
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht12.jpg" 
+                            Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Click Refresh Button." FontWeight="Bold"/>
+                            <Run Text="Use this button if the graph doesn't load up." />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht13.jpg" 
+                Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Click Events Button." FontWeight="Bold"/>
+                            <Run Text="Click this button to explore analytics for various events." />
+                            <Run Text="*This system can manage multiple events." FontStyle="Italic" />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
 
             <TextBlock Text="
                         "/>
@@ -117,6 +196,7 @@
             </Grid>
             <!--end-->
 
+            <!--start-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="390" />
@@ -145,6 +225,7 @@
                     </Border.Effect>
                 </Border>
             </Grid>
+            <!--end-->
 
             <TextBlock Text="
            "/>
@@ -162,6 +243,7 @@
             <TextBlock Text="
 "/>
 
+            <!--start-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="390" />
@@ -181,8 +263,340 @@
                 <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
                     <Grid Grid.Column="1">
                         <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
-                        <Run Text="• Click Events." FontWeight="Bold"/>
-                        <Run Text="To access data, you should click Events" />
+                            <Run Text="• Click Events." FontWeight="Bold"/>
+                            <Run Text="To manage event, click Events." />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht5.jpg"
+                               Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Click View." FontWeight="Bold"/>
+                            <Run Text="This will display a detailed list of departments involved on the event. " />
+                            <Run Text="
+                                 
+                                 *" />
+                            <Run Text="Once clicked it will show all departments involved of the event, and a button on the side labeled" FontStyle="Italic" /> 
+                            <Run Text="View Attendees" FontWeight="SemiBold"/>
+                            <Run Text="in which it will show the attendees of that department." FontStyle="Italic" />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht14.jpg"
+                Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="*If you want to save the list as an excel file, otherwise ignore this step." FontStyle="Italic"/>
+                            <Run Text="
+                                 
+                                 • Click Export." FontWeight="Bold"/>
+                            <Run Text="This will save the list as an excel file on the Documents Folder. " />
+
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht6.jpg"
+                               Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Click Edit." FontWeight="Bold"/>
+                            <Run Text="To add another included department to your event." />
+                            <Run Text="
+                                 
+                                 *" />
+                            <Run Text="You will be redirected to" FontStyle="Italic" />
+                            <Run Text="Create Event," FontWeight="SemiBold"/>
+                            <Run Text="and repeat the same process, make sure to fill in required fields." FontStyle="Italic"/>
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <TextBlock Text="
+"/>
+
+            <Border Background="white" CornerRadius="10" Width="305" Height="35" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="10,0,-15,0">
+                    <Run Text="Student List" />
+                    <Run Text="Management" Foreground="#b20a07" FontStyle="Italic"/>
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <TextBlock Text="
+"/>
+
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/7.jpg"
+                               Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Click Student Lists." FontWeight="Bold"/>
+                            <Run Text="To view, add, delete and update the student list. " />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht8.jpg"
+                            Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Access the Department Menu" FontWeight="Bold"/>
+                            <Run Text="
+                                 
+                                 " />
+                            <Run Text="Navigate to the left side menu where you'll find a list of department buttons labeled: ALL, BED, CAE... " />
+                            <Run Text="
+     
+    
+                                 *" />
+                            <Run Text="These buttons allow you to filter and view the student list by department." FontStyle="Italic" />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <TextBlock Text="
+"/>
+
+            <Border Background="white" CornerRadius="10" Width="260" Height="35" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="10,0,-15,0">
+                    <Run Text="Adding" Foreground="#b20a07" FontStyle="Italic"/>
+                    <Run Text="New Students" />
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <TextBlock Text="
+"/>
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht9.jpg"
+                            Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Click Add." FontWeight="Bold"/>
+                            <Run Text="Fill in the required student details in the form that appears, and click confirm." />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+            </Grid>
+            <!--end-->
+
+            <TextBlock Text="
+"/>
+
+            <Border Background="white" CornerRadius="10" Width="220" Height="35" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="10,0,-15,0">
+                    <Run Text="Deleting" Foreground="#b20a07" FontStyle="Italic"/>
+                    <Run Text="Students" />
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <TextBlock Text="
+"/>
+            <!--start-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht10.jpg"
+                            Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Click Delete." FontWeight="Bold"/>
+                            <Run Text="Enter the student number in the form that appears, and click delete." />
+                        </TextBlock>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <!--end-->
+
+            <TextBlock Text="
+"/>
+
+            <Border Background="white" CornerRadius="10" Width="300" Height="35" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="10,0,-15,0">
+                    <Run Text="Updating" Foreground="#b20a07" FontStyle="Italic"/>
+                    <Run Text="Student Details" />
+                </TextBlock>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                </Border.Effect>
+            </Border>
+
+            <TextBlock Text="
+"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="390" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="white" CornerRadius="10" Margin="10">
+                    <Grid Grid.Column="0">
+                        <Image Source="/Image/enht11.jpg"
+                            Height="250" Width="300" Stretch="Fill"/>
+                    </Grid>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="4" Opacity="0.5"/>
+                    </Border.Effect>
+                </Border>
+
+                <Border Grid.Column="1" Background="white" CornerRadius="10" Margin="10" VerticalAlignment="Center">
+                    <Grid Grid.Column="1">
+                        <TextBlock FontSize="20" Margin="10" TextWrapping="Wrap">
+                            <Run Text="• Click Update." FontWeight="Bold"/>
+                            <Run Text="Enter the student number in the form that appears, and once the attendee is found, you can modify it's Name, Password and Department." />
                         </TextBlock>
                     </Grid>
                     <Border.Effect>

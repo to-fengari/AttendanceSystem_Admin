@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Image\7.jpg" />
     <None Remove="Image\atticon.ico" />
     <None Remove="Image\bed.png" />
     <None Remove="Image\cae.png" />
@@ -26,9 +27,18 @@
     <None Remove="Image\cte.png" />
     <None Remove="Image\download.jpeg" />
     <None Remove="Image\enht1.png" />
+    <None Remove="Image\enht10.jpg" />
+    <None Remove="Image\enht11.jpg" />
+    <None Remove="Image\enht12.jpg" />
+    <None Remove="Image\enht13.jpg" />
+    <None Remove="Image\enht14.jpg" />
     <None Remove="Image\enht2.png" />
     <None Remove="Image\enht3.png" />
     <None Remove="Image\enht4.png" />
+    <None Remove="Image\enht5.jpg" />
+    <None Remove="Image\enht6.jpg" />
+    <None Remove="Image\enht8.jpg" />
+    <None Remove="Image\enht9.jpg" />
     <None Remove="Image\enreclogo.png" />
     <None Remove="Image\info.ico" />
     <None Remove="Image\lock.png" />
@@ -61,6 +71,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Image\7.jpg" />
     <Resource Include="Image\atticon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -98,6 +109,11 @@
     <Resource Include="Image\enht1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\enht10.jpg" />
+    <Resource Include="Image\enht11.jpg" />
+    <Resource Include="Image\enht12.jpg" />
+    <Resource Include="Image\enht13.jpg" />
+    <Resource Include="Image\enht14.jpg" />
     <Resource Include="Image\enht2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -107,6 +123,10 @@
     <Resource Include="Image\enht4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\enht5.jpg" />
+    <Resource Include="Image\enht6.jpg" />
+    <Resource Include="Image\enht8.jpg" />
+    <Resource Include="Image\enht9.jpg" />
     <Resource Include="Image\enreclogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
