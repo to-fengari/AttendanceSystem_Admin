@@ -123,12 +123,12 @@
                                FontWeight="Bold"
                                Padding="10"
                                Margin="15,0,0,0"/>
-                    <Border Width="350" Height="400" Background="White" CornerRadius="10" Padding="10">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.5"/>
-                        </Border.Effect>
-                        <Wpf:PieChart Name="PieChart" LegendLocation="Bottom" />
-                    </Border>
+                    <Border Width="365" Height="475" Background="White" CornerRadius="10" Padding="10">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.5"/>
+                            </Border.Effect>
+                            <Wpf:PieChart Name="PieChart" LegendLocation="Bottom"/>
+                        </Border>
                 </StackPanel>
             </Grid>
 
@@ -142,7 +142,7 @@
                                FontWeight="Bold"
                                Padding="10"
                                Margin="15,0,0,0"/>
-                    <Border Width="350" Height="400" Background="White" CornerRadius="10" Padding="10">
+                    <Border Width="365" Height="475" Background="White" CornerRadius="10" Padding="10">
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.5"/>
                         </Border.Effect>

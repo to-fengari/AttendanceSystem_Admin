@@ -133,24 +133,31 @@ namespace prototype.View
                     DepartmentTextBlock.Text = $"Department: {student.Department}";
                     StudentNameTextBlock.Visibility = Visibility.Visible;
                     DepartmentTextBlock.Visibility = Visibility.Visible;
+                    DeleteButton.IsEnabled = true;
+
                 }
                 else
                 {
                     ErrorTextBlock.Text = "Student not found.";
                     StudentNameTextBlock.Text = "Name:";
                     DepartmentTextBlock.Text = "Department:";
+                    DeleteButton.IsEnabled = false;
                 }
             }
             else
             {
                 StudentNameTextBlock.Text = "Name:";
                 DepartmentTextBlock.Text = "Department:";
+                DeleteButton.IsEnabled = false;
+
             }
 
             if (StudentNumberTextBox.Text.Length > 6)
             { 
                 StudentNumberTextBox.Text = StudentNumberTextBox.Text.Substring(0, 6);
                 StudentNumberTextBox.SelectionStart = StudentNumberTextBox.Text.Length;
+                DeleteButton.IsEnabled = false;
+
             }
         }
 

@@ -208,10 +208,12 @@ namespace prototype.View
                 if (studentExists)
                 {
                     ErrorTextBlock.Text = "Student with the Student Number Already Exists";
+                    ConfirmButton.IsEnabled = false;
                 }
                 else
                 {
                     ErrorTextBlock.Text = string.Empty;
+                    ConfirmButton.IsEnabled = true;
                 }
             }
         }

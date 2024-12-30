@@ -53,15 +53,13 @@
                             <LineBreak/>
                             Student_Number, Student_Name, Department, Password
                             <LineBreak/>
-                            Example:
-                            <LineBreak/>
                             123456, Juan Dela Cruz, BED, password123
                         </TextBlock>
                     </Image.ToolTip>
                 </Image>
-                <Button Content="Cancel" Width="75" Height="20" Margin="5"
+                <Button x:Name="CancelButton" Content="Cancel" Width="75" Height="20" Margin="5"
                         Click="CancelButton_Click"/>
-                <Button Content="Confirm" Width="75" Height="20" Margin="5"
+                <Button x:Name="ConfirmButton" Content="Confirm" Width="75" Height="20" Margin="5"
                         Click="ConfirmButton_Click"/>
             </StackPanel>
         </StackPanel>
