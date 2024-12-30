@@ -92,7 +92,7 @@ namespace prototype.View
 
                 if (!ValidateCSVFormat(filePath))
                 {
-                    MessageBox.Show("The CSV file format is incorrect. Please check the file and try again.");
+                    MessageBox.Show("The CSV file format is incorrect or the file is currently in use by another process.. Please check the file and try again.");
                     return;
                 }
 
@@ -139,6 +139,11 @@ namespace prototype.View
 
         private bool ValidateCSVFormat(string filePath)
         {
+            if (IsFileInUse(filePath))
+            {
+                return false;
+            }
+
             string[] expectedHeaders = { "StudentNumber", "StudentName", "Department", "Password" };
             var validDepartments = new HashSet<string> { "BED", "CAE", "CAFAE", "CASE", "CCE", "CCJE", "CEE", "CHE", "CHSE", "CTE", "TS", "PS" };
 
@@ -191,9 +196,24 @@ namespace prototype.View
             return true;
         }
 
+        private bool IsFileInUse(string filePath)
+        {
+            try
+            {
+                using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    return false;
+                }
+            }
+            catch (IOException)
+            {   
+                return true;
+            }
+        }
+
         private void StudentNumberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !IsTextAllowed(e.Text);
+            e.Handled = !IsTextAllowed(e.Text) || (StudentNumberTextBox.Text.Length >= 6);
         }
 
         private async void StudentNumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
